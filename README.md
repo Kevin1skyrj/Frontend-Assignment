@@ -143,7 +143,7 @@ Top-level layout (important files only):
 - Produce a Storybook static build (`storybook-static`) for deployment to static hosts (Vercel/Netlify).
 
 
-## 🖼 Screenshots & GIFs (optional but recommended)
+## 🖼 Screenshots
 
 The repository now includes four example screenshots in `assets/screenshots/`. They are embedded below with short captions — these render automatically on GitHub once the images are committed.
 
@@ -167,13 +167,3 @@ Caption: Three common input visual variants used by the design system: outlined 
 
 Caption: A management dashboard view using the DataTable component: selectable rows, status badges, and export/add buttons.
 
-Tips:
-
-- Keep images under 1–2 MB for fast GitHub rendering.
-- Prefer PNG for screenshots and short GIFs (3–10s) for animated flows.
-- Commit the `assets/screenshots/` files to your repo so GitHub displays them in the README.
-
-
----
-
-If you'd like, I can add the four screenshot files you attached to `assets/screenshots/` and commit everything. Tell me whether you want them added and whether to commit and push to the `main` branch.
