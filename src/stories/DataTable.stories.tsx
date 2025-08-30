@@ -1,4 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/react';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import DataTable from '../components/DataTable/DataTable';
 import type { Column } from '../types/DataTable';
 
@@ -142,6 +143,9 @@ const meta: Meta<typeof DataTable> = {
       control: { type: 'text' },
       description: 'Custom message when no data is available',
     },
+  data: { control: { type: 'object' }, description: 'Array of row objects' },
+  columns: { control: { type: 'object' }, description: 'Columns configuration array' },
+  onRowSelect: { action: 'onRowSelect' },
   },
 };
 
@@ -150,8 +154,8 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    data: sampleUsers as any,
-    columns: userColumns as any,
+  data: sampleUsers as User[],
+  columns: userColumns as unknown as Column<Record<string, any>>[],
   },
   decorators: [
     (Story) => (
@@ -165,8 +169,8 @@ export const Default: Story = {
 
 export const WithSelection: Story = {
   args: {
-    data: sampleUsers as any,
-    columns: userColumns as any,
+  data: sampleUsers as User[],
+  columns: userColumns as unknown as Column<Record<string, any>>[],
     selectable: true,
     onRowSelect: (selectedRows) => console.log('Selected rows:', selectedRows),
   },
@@ -185,8 +189,8 @@ export const WithSelection: Story = {
 
 export const Loading: Story = {
   args: {
-    data: [] as any,
-    columns: userColumns as any,
+  data: [] as User[],
+  columns: userColumns as unknown as Column<Record<string, any>>[],
     loading: true,
   },
   decorators: [
@@ -201,8 +205,8 @@ export const Loading: Story = {
 
 export const EmptyState: Story = {
   args: {
-    data: [] as any,
-    columns: userColumns as any,
+  data: [] as User[],
+  columns: userColumns as unknown as Column<Record<string, any>>[],
     emptyMessage: 'No users found. Try adjusting your search criteria.',
   },
   decorators: [
@@ -336,8 +340,8 @@ export const CustomColumns: Story = {
           </p>
         </div>
         <DataTable
-          data={sampleUsers as any}
-          columns={customColumns as any}
+          data={sampleUsers as User[]}
+          columns={customColumns as unknown as Column<Record<string, any>>[]}
           className="shadow-sm"
         />
       </div>
@@ -374,8 +378,8 @@ export const WithSelectionAndActions: Story = {
           </div>
         </div>
         <DataTable
-          data={sampleUsers as any}
-          columns={userColumns as any}
+          data={sampleUsers as User[]}
+          columns={userColumns as unknown as Column<Record<string, any>>[]}
           selectable
           onRowSelect={handleRowSelect}
           className="shadow-sm"
@@ -401,8 +405,8 @@ const largeDataset = Array.from({ length: 50 }, (_, index) => ({
 
 export const LargeDataset: Story = {
   args: {
-    data: largeDataset as any,
-    columns: userColumns as any,
+  data: largeDataset as User[],
+  columns: userColumns as unknown as Column<Record<string, any>>[],
     selectable: true,
   },
   decorators: [
@@ -424,8 +428,8 @@ export const LargeDataset: Story = {
 
 export const Playground: Story = {
   args: {
-    data: sampleUsers as any,
-    columns: userColumns as any,
+  data: sampleUsers as User[],
+  columns: userColumns as unknown as Column<Record<string, any>>[],
     selectable: false,
     loading: false,
     emptyMessage: 'No data available',
